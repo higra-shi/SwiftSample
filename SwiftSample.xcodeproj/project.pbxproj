@@ -78,11 +78,11 @@
 			isa = PBXGroup;
 			children = (
 				3C5E025D1956D4E7005D69AF /* AppDelegate.swift */,
-				3C5E02621956D4E7005D69AF /* ViewController.swift */,
-				3C5E02641956D4E7005D69AF /* Main.storyboard */,
 				3C5E02671956D4E7005D69AF /* Images.xcassets */,
-				3C5E025F1956D4E7005D69AF /* SwiftSample.xcdatamodeld */,
+				3C5E02641956D4E7005D69AF /* Main.storyboard */,
 				3C5E025B1956D4E7005D69AF /* Supporting Files */,
+				3C5E025F1956D4E7005D69AF /* SwiftSample.xcdatamodeld */,
+				3C5E02621956D4E7005D69AF /* ViewController.swift */,
 			);
 			path = SwiftSample;
 			sourceTree = "<group>";
@@ -331,9 +331,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = SwiftSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -342,6 +344,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = SwiftSample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
