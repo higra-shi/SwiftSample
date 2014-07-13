@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.title = "Main";
+
         var viewFrame: CGRect = self.view.frame;
 
         viewFrame.origin = CGPointZero;
@@ -26,6 +28,33 @@ class ViewController: UIViewController {
         textLabel = UILabel(frame: viewFrame);
         textLabel.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.5);
         self.view.addSubview(textLabel);
+
+        var myVariable: NSInteger = 42
+        myVariable = 50;
+        let myConstant = 60
+        // myConstant = 9
+
+        var cities = ["Tokyo", "Osaka", "Sendai"]
+        cities[2] = "Nagoya"
+        cities.append("Kyoto")
+
+        var scores = ["A":32, "B":76, "C":54]
+        scores["A"] = 82
+        scores["D"] = 76
+
+        for (var i = 0; i < cities.count; i++) {
+            println(cities[i]);
+        }
+        
+        for (name, score) in scores {
+            println("Name : \(name) -> \(score)");
+        }
+
+        var i = 0;
+        while (i < cities.count) {
+            println("City: "+cities[i]);
+            i++;
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,5 +63,13 @@ class ViewController: UIViewController {
     }
 
 
+    @IBAction func tappedButton(sender: UIButton?)
+    {
+        var vc: AnyObject! = self.navigationController.storyboard.instantiateViewControllerWithIdentifier("SubView");
+        if (vc.isKindOfClass(UIViewController)) {
+            self.navigationController.pushViewController(vc as UIViewController, animated: true);
+        }
+
+    }
 }
 
