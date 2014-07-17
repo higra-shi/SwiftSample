@@ -65,11 +65,32 @@ class ViewController: UIViewController {
 
     @IBAction func tappedButton(sender: UIButton?)
     {
-        var vc: AnyObject! = self.navigationController.storyboard.instantiateViewControllerWithIdentifier("SubView");
-        if (vc.isKindOfClass(UIViewController)) {
-            self.navigationController.pushViewController(vc as UIViewController, animated: true);
+//        var vc: AnyObject! = self.navigationController.storyboard.instantiateViewControllerWithIdentifier("SubView");
+//        if (vc.isKindOfClass(UIViewController)) {
+//            self.navigationController.pushViewController(vc as UIViewController, animated: true);
+//        }
+
+        let nc = NSNotificationCenter.defaultCenter();
+        nc.addObserver(self, selector: "didLoadRssData:", name: NetworkManagerRequestSuccess, object: nil);
+        nc.addObserver(self, selector: "didLoadRssData:", name: NetworkManagerRequestFailed, object: nil);
+
+        let manager = CommonNetworkManager();
+        manager.requestWithUrl("http://rss.dailynews.yahoo.co.jp/fc/rss.xml");
+    }
+
+    func didLoadRssData(notification: NSNotification)
+    {
+        NSLog("notification: %@", notification.name);
+        if (NetworkManagerRequestFailed.isEqualToString(notification.name)) {
+            return;
         }
 
+        let receivedData = (notification.object as NSData);
+        let parse = RSSParser();
+        parse.parseWtihRssData(receivedData);
+
+        NSLog("%@", NSString(data: receivedData, encoding: NSUTF8StringEncoding));
+        NSLog("%@", parse.rssData);
     }
 }
 
