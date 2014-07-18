@@ -12,9 +12,11 @@ class RSSParser: NSObject {
     var rssData: NSMutableArray = NSMutableArray();
 
     class RSSParserPrivate : NSObject, NSXMLParserDelegate {
+        let elementNameItem: NSString = "item";
+        let elementNamePubDate: NSString = "pubDate";
+
         var rssData: NSMutableArray = NSMutableArray();
         var itemData: NSMutableDictionary = NSMutableDictionary();
-        let itemElementName: NSString = "item";
         var isItemElement = false;
         var elementValue: NSString = NSString();
         var attributeData: NSMutableDictionary = NSMutableDictionary();
@@ -30,7 +32,7 @@ class RSSParser: NSObject {
         {
             NSLog("start\t element: %@", elementName);
             NSLog("%@", attributeDict);
-            if (itemElementName.isEqualToString(elementName)) {
+            if (elementNameItem.isEqualToString(elementName)) {
                 isItemElement = true;
             }
             else if (!isItemElement) {
@@ -44,13 +46,26 @@ class RSSParser: NSObject {
         func parser(parser: NSXMLParser!, didEndElement elementName: String!, namespaceURI: String!, qualifiedName qName: String!)
         {
             NSLog("end\t element: %@", elementName);
-            if (itemElementName.isEqualToString(elementName)) {
+            if (elementNameItem.isEqualToString(elementName)) {
                 rssData.addObject(NSDictionary(dictionary: itemData));
                 itemData.removeAllObjects();
                 isItemElement = false;
             }
             else if (isItemElement) {
-                itemData.setValue(elementValue, forKey: elementName);
+                if (elementNamePubDate.isEqualToString(elementName)) {
+                    var formatter = NSDateFormatter();
+                    formatter.calendar = NSCalendar(calendarIdentifier: NSGregorianCalendar);
+                    formatter.locale = NSLocale(localeIdentifier: "en_US");
+                    formatter.timeZone = NSTimeZone.systemTimeZone();
+                    formatter.dateFormat = "EEE, d LLL yyyy HH:mm:ss Z"
+                    var pubDate = formatter.dateFromString(elementValue);
+                    if (pubDate) {
+                        itemData.setValue(pubDate, forKey: elementName);
+                    }
+                }
+                else {
+                    itemData.setValue(elementValue, forKey: elementName);
+                }
             }
         }
 
@@ -58,6 +73,16 @@ class RSSParser: NSObject {
         {
             NSLog("Characters: %@", string);
             elementValue = string;
+        }
+
+        func sortedRssData() -> NSArray
+        {
+            rssData.sortUsingComparator({source, target in
+                var sourceDate = source.objectForKey(self.elementNamePubDate) as NSDate;
+                var targetDate = target.objectForKey(self.elementNamePubDate) as NSDate;
+                return targetDate.compare(sourceDate);
+                });
+            return NSArray(array: rssData);
         }
     }
 
@@ -78,6 +103,6 @@ class RSSParser: NSObject {
         else {
             NSLog("rss parse is success");
         }
-        rssData = private.rssData;
+        rssData.addObjectsFromArray(private.rssData);
     }
 }
