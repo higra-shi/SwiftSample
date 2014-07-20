@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6185.7" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6181.2"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WebViewController" customModule="SwiftSample" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="webBrowser" destination="Esz-oZ-PeL" id="by7-1S-Wc1"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Esz-oZ-PeL">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="436"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="dNb-yg-yoK"/>
+                    </connections>
+                </webView>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JTd-FP-e30">
+                    <rect key="frame" x="0.0" y="436" width="480" height="44"/>
+                    <items>
+                        <barButtonItem systemItem="rewind" id="9dl-gX-AqX">
+                            <connections>
+                                <action selector="goBack" destination="Esz-oZ-PeL" id="mng-Dt-dfg"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem systemItem="fastForward" id="Kc0-LZ-lbM">
+                            <connections>
+                                <action selector="goForward" destination="Esz-oZ-PeL" id="fEZ-d1-m1w"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem systemItem="flexibleSpace" id="keu-9v-5j6"/>
+                        <barButtonItem systemItem="refresh" id="bes-aG-fg5">
+                            <connections>
+                                <action selector="reload" destination="Esz-oZ-PeL" id="lfb-kN-NfS"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                </toolbar>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="JTd-FP-e30" secondAttribute="trailing" id="5yV-lO-yzQ"/>
+                <constraint firstItem="Esz-oZ-PeL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="6tM-Qs-Hod"/>
+                <constraint firstItem="JTd-FP-e30" firstAttribute="top" secondItem="Esz-oZ-PeL" secondAttribute="bottom" id="FVx-WQ-QXY"/>
+                <constraint firstItem="Esz-oZ-PeL" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="LVV-FB-r9m"/>
+                <constraint firstAttribute="trailing" secondItem="Esz-oZ-PeL" secondAttribute="trailing" id="Pxr-jK-1QL"/>
+                <constraint firstItem="JTd-FP-e30" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bZe-d6-BQY"/>
+                <constraint firstAttribute="bottom" secondItem="JTd-FP-e30" secondAttribute="bottom" id="rna-vj-Ht4"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

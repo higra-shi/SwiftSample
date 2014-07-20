@@ -107,7 +107,7 @@ class ViewController: UIViewController {
         self.view.addSubview(loadingView);
     }
 
-    func loadRssData(sender: AnyObject?)
+    func loadRssData(sender: AnyObject!)
     {
         showLoadinView();
 
@@ -166,6 +166,7 @@ extension ViewController : UITableViewDelegate {
         tableView.deselectRowAtIndexPath(indexPath, animated: true);
         let rssItem: NSDictionary = rssData[indexPath.row] as NSDictionary;
         let urlString = rssItem[RssElementLinkUrl] as NSString;
+/*
         var alert = UIAlertController(title: "Link", message: urlString, preferredStyle: UIAlertControllerStyle.Alert);
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler:
             {alertAction in
@@ -174,6 +175,11 @@ extension ViewController : UITableViewDelegate {
         self.presentViewController(alert, animated: true, completion: {
             NSLog("show alert view");
             });
+*/
+        var vc = WebViewController(nibName: "WebViewController", bundle: nil);
+        vc.urlString = urlString;
+        vc.title = rssItem[RssElementTitle] as NSString;
+        self.navigationController.pushViewController(vc, animated: true);
     }
 }
 

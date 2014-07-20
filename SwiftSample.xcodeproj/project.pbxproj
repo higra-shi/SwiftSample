@@ -13,6 +13,8 @@
 		3C5E02661956D4E7005D69AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C5E02641956D4E7005D69AF /* Main.storyboard */; };
 		3C5E02681956D4E7005D69AF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C5E02671956D4E7005D69AF /* Images.xcassets */; };
 		3C5E02741956D4E7005D69AF /* SwiftSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5E02731956D4E7005D69AF /* SwiftSampleTests.swift */; };
+		3C62E07C197BB6A400F31B2C /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C62E07A197BB6A400F31B2C /* WebViewController.swift */; };
+		3C62E07D197BB6A400F31B2C /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C62E07B197BB6A400F31B2C /* WebViewController.xib */; };
 		3C9262431977B2BF00C50AAD /* CommonNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9262421977B2BF00C50AAD /* CommonNetworkManager.swift */; };
 		3C9262451977B98F00C50AAD /* RSSParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9262441977B98F00C50AAD /* RSSParser.swift */; };
 /* End PBXBuildFile section */
@@ -38,6 +40,8 @@
 		3C5E026D1956D4E7005D69AF /* SwiftSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C5E02721956D4E7005D69AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3C5E02731956D4E7005D69AF /* SwiftSampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftSampleTests.swift; sourceTree = "<group>"; };
+		3C62E07A197BB6A400F31B2C /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		3C62E07B197BB6A400F31B2C /* WebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
 		3C9262421977B2BF00C50AAD /* CommonNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonNetworkManager.swift; sourceTree = "<group>"; };
 		3C9262441977B98F00C50AAD /* RSSParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -130,6 +134,8 @@
 			isa = PBXGroup;
 			children = (
 				3C5E02621956D4E7005D69AF /* ViewController.swift */,
+				3C62E07A197BB6A400F31B2C /* WebViewController.swift */,
+				3C62E07B197BB6A400F31B2C /* WebViewController.xib */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -214,6 +220,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C62E07D197BB6A400F31B2C /* WebViewController.xib in Resources */,
 				3C5E02661956D4E7005D69AF /* Main.storyboard in Resources */,
 				3C5E02681956D4E7005D69AF /* Images.xcassets in Resources */,
 			);
@@ -234,6 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C5E02631956D4E7005D69AF /* ViewController.swift in Sources */,
+				3C62E07C197BB6A400F31B2C /* WebViewController.swift in Sources */,
 				3C9262451977B98F00C50AAD /* RSSParser.swift in Sources */,
 				3C5E025E1956D4E7005D69AF /* AppDelegate.swift in Sources */,
 				3C5E02611956D4E7005D69AF /* SwiftSample.xcdatamodeld in Sources */,
