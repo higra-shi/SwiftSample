@@ -45,7 +45,7 @@ class WebViewController: UIViewController, UIWebViewDelegate {
     
     func showAlertView(sender: AnyObject!)
     {
-        var alertController = UIAlertController(title: "Title", message: "message", preferredStyle: UIAlertControllerStyle.ActionSheet);
+        var alertController = UIAlertController(title: "Title", message: "message", preferredStyle: UIAlertControllerStyle.Alert);
 
         let alertAction: (UIAlertAction!) -> Void = {alertAction in
             if (alertAction.style == UIAlertActionStyle.Cancel) {
@@ -76,8 +76,3 @@ class WebViewController: UIViewController, UIWebViewDelegate {
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false;
     }
 }
-
-//extension WebViewController : UIWebViewDelegate
-//{
-//    
-//}
