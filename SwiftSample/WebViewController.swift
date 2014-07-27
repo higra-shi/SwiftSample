@@ -10,8 +10,13 @@ import UIKit
 
 class WebViewController: UIViewController, UIWebViewDelegate {
     
-    @IBOutlet var webBrowser: UIWebView;
+    @IBOutlet var webBrowser: UIWebView!;
     var urlString : NSString = NSString();
+
+    init(coder aDecoder: NSCoder!)
+    {
+        super.init(coder: aDecoder);
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,19 +35,7 @@ class WebViewController: UIViewController, UIWebViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
-    /*
-    // #pragma mark - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    
     func showAlertView(sender: AnyObject!)
     {
         var alertController = UIAlertController(title: "Title", message: "message", preferredStyle: UIAlertControllerStyle.Alert);

@@ -25,10 +25,6 @@ class ViewController: UIViewController {
         self.title = "Main";
 
         var viewFrame: CGRect = self.view.frame;
-
-        let barButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Refresh, target: self, action: nil);
-        self.navigationController.navigationItem.setRightBarButtonItem(barButtonItem, animated: true);
-
         viewFrame.origin = CGPointZero;
 
         let tableView = UITableView(frame: viewFrame, style: UITableViewStyle.Plain);
@@ -40,34 +36,6 @@ class ViewController: UIViewController {
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: CellIdentifier);
         self.view.addSubview(tableView);
 
-/*
-        var myVariable: NSInteger = 42
-        myVariable = 50;
-        let myConstant = 60
-        // myConstant = 9
-
-        var cities = ["Tokyo", "Osaka", "Sendai"]
-        cities[2] = "Nagoya"
-        cities.append("Kyoto")
-
-        var scores = ["A":32, "B":76, "C":54]
-        scores["A"] = 82
-        scores["D"] = 76
-
-        for (var i = 0; i < cities.count; i++) {
-            println(cities[i]);
-        }
-        
-        for (name, score) in scores {
-            println("Name : \(name) -> \(score)");
-        }
-
-        var i = 0;
-        while (i < cities.count) {
-            println("City: "+cities[i]);
-            i++;
-        }
-*/
         loadRssData(nil);
     }
 
@@ -141,7 +109,7 @@ class ViewController: UIViewController {
     }
 }
 
-//MARK: Load RSS Data
+// MARK: - Table view data source
 
 extension ViewController : UITableViewDataSource {
 
@@ -159,6 +127,8 @@ extension ViewController : UITableViewDataSource {
     }
 }
 
+// MARK: - Table view delegate
+
 extension ViewController : UITableViewDelegate {
 
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!)
@@ -166,17 +136,8 @@ extension ViewController : UITableViewDelegate {
         tableView.deselectRowAtIndexPath(indexPath, animated: true);
         let rssItem: NSDictionary = rssData[indexPath.row] as NSDictionary;
         let urlString = rssItem[RssElementLinkUrl] as NSString;
-/*
-        var alert = UIAlertController(title: "Link", message: urlString, preferredStyle: UIAlertControllerStyle.Alert);
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler:
-            {alertAction in
-                NSLog("%@", alert)
-            }));
-        self.presentViewController(alert, animated: true, completion: {
-            NSLog("show alert view");
-            });
-*/
-        var vc = WebViewController(nibName: "WebViewController", bundle: nil);
+
+        var vc = WebViewController(coder: nil);
         vc.urlString = urlString;
         vc.title = rssItem[RssElementTitle] as NSString;
         self.navigationController.pushViewController(vc, animated: true);

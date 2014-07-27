@@ -96,16 +96,16 @@ class RSSParser: NSObject {
 
     func parseWtihRssData(data: NSData)
     {
-        let private = RSSParserPrivate();
+        let privateObject = RSSParserPrivate();
 
         var xmlParser = NSXMLParser(data: data);
-        xmlParser.delegate = private;
+        xmlParser.delegate = privateObject;
         if (!xmlParser.parse()) {
             NSLog("error on rss parsing");
         }
         else {
             NSLog("rss parse is success");
         }
-        rssData.addObjectsFromArray(private.rssData);
+        rssData.addObjectsFromArray(privateObject.rssData);
     }
 }
